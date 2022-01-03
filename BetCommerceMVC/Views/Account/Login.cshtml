@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<style>
+    .divider-text {
+        position: relative;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+        .divider-text span {
+            padding: 7px;
+            font-size: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .divider-text:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+            top: 55%;
+            left: 0;
+            z-index: 1;
+        }
+</style>
+
+<div class="container">
+    <hr>
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center"> Login</h4>
+            <div id="message"></div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"> </i> </span>
+                </div>
+                <input name="" class="form-control" id="txt_uname" placeholder="Email address" type="email">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"> </i> </span>
+                </div>
+                <input class="form-control" id="txt_pwd" placeholder="Create password" type="password">
+            </div> <!-- form-group// -->
+
+            <div class="form-group">
+                <button type="submit" id="but_submit" class="btn btn-primary btn-block"> Log in</button>
+            </div> <!-- form-group// -->
+        </article>
+    </div> <!-- card.// -->
+</div>
+<!-- container end.// -->
+<br>
+<br>
+<script>
+
+
+
+    $(document).ready(function () {
+        $("#but_submit").click(function () {
+            var useremail = $("#txt_uname").val().trim();
+            var userpassword = $("#txt_pwd").val().trim();
+            var dt = {
+                email: useremail,
+                password: userpassword
+            }
+
+            if (useremail != "" && userpassword != "") {
+                alert(userpassword);
+                
+                $.ajax({
+                    url: 'https://localhost:44373/Account/authenticate',
+                    type: 'post',
+                    contentType: 'application/json',
+                    dataType: "json",
+                    accept: '*/*',
+                    data: JSON.stringify(dt),
+                    success: function (response) {
+                        var msg = "";
+                        if (response.jwtToken !== null) {
+                            document.location.href = "/";
+                        } else {
+                            msg = "Invalid username and password!";
+                        }
+                        $("#message").html(msg);
+                    }
+                });
+            }
+        });
+    });
+</script>
+

@@ -1,0 +1,73 @@
+﻿<div class="col-sm-3">
+    <div class="left-sidebar">
+        <h4>Category</h4>
+        <div class="panel-group category-products" id="accordian">
+            <!--category-productsr-->
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="#">Kids</a></h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="#">Fashion</a></h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="#">Households</a></h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="#">Interiors</a></h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="#">Clothing</a></h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="#">Bags</a></h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="#">Shoes</a></h4>
+                </div>
+            </div>
+        </div><!--/category-productsr-->
+    </div>
+</div>
+
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <div class="page-header">
+            <h4>
+                Shop
+                <div style="float: right; cursor: pointer;">
+                    <span class="glyphicon glyphicon-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
+                </div>
+            </h4>
+        </div>
+        @foreach (var product in ViewBag.Products)
+        {
+            <div class="col-md-3 text-center">
+                <img src="images/img_1.png" width="150px" height="150px">
+                <br>
+                @product.ProductName  - <strong>@product.Price</strong>
+                <br>
+                <button class="btn btn-danger my-cart-btn" data-id="@product.ProductId" data-name="@product.ProductName" data-summary="@product.ProductDesc" data-price="@product.Price" data-quantity="1" data-image="images/img_1.png">Add to Cart</button>
+                <a href="#" class="btn btn-info">Details</a>
+            </div>
+        }
+
+
+
+    </div>
+</div>
