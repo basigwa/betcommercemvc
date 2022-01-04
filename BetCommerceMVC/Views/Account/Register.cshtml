@@ -105,7 +105,6 @@
             }
 
             if (useremail != "" && userpassword != "") {
-                alert(userpassword);
 
                 $.ajax({
                     url: 'https://localhost:44373/Account/Register',
@@ -117,6 +116,11 @@
                     success: function (response) {
                         var msg = "";
                         if (response.jwtToken !== null) {
+                            var now = new Date();
+                            now.setMonth(now.getMonth() + 1);
+                            cookievalue = response.jwtToken + ";"
+
+                            document.cookie = "bsecret=" + cookievalue + "expires=" + now.toUTCString() + ";path=/;" ;                            document.cookie = "expires=" + now.toUTCString() + ";"
                             document.location.href = "/Account/Login";
                         } else {
                             msg = "Invalid username and password!";

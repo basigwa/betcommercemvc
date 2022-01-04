@@ -55,6 +55,7 @@
             <div class="form-group">
                 <button type="submit" id="but_submit" class="btn btn-primary btn-block"> Log in</button>
             </div> <!-- form-group// -->
+            <p class="text-center"> No account? <a href="/Account/Register"> Register</a> </p>
         </article>
     </div> <!-- card.// -->
 </div>
@@ -75,7 +76,6 @@
             }
 
             if (useremail != "" && userpassword != "") {
-                alert(userpassword);
                 
                 $.ajax({
                     url: 'https://localhost:44373/Account/authenticate',
@@ -87,6 +87,12 @@
                     success: function (response) {
                         var msg = "";
                         if (response.jwtToken !== null) {
+                            var now = new Date();
+                            now.setMonth(now.getMonth() + 1);
+                            cookievalue = response.email + ";"
+
+                            document.cookie = "bsecret=" + cookievalue + "expires=" + now.toUTCString() + ";path=/;";
+                            document.location.href = "/Account/Login";
                             document.location.href = "/";
                         } else {
                             msg = "Invalid username and password!";
