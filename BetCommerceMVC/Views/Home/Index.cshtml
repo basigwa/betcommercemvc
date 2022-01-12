@@ -4,43 +4,19 @@
         <div class="panel-group category-products" id="accordian">
             <!--category-productsr-->
 
+            @foreach (var cat in ViewBag.Categories)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a href="#">@cat.ProductCategoryName</a></h4>
+                    </div>
+                </div>
+            }
 
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Kids</a></h4>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Fashion</a></h4>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Households</a></h4>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Interiors</a></h4>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Clothing</a></h4>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Bags</a></h4>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Shoes</a></h4>
-                </div>
-            </div>
+
+
+
         </div><!--/category-productsr-->
     </div>
 </div>
@@ -58,11 +34,11 @@
         @foreach (var product in ViewBag.Products)
         {
             <div class="col-md-3 text-center">
-                <img src="images/img_1.png" width="150px" height="150px">
+                <img src="@product.ProductImage" width="150px" height="150px">
                 <br>
                 @product.ProductName  - <strong>@product.Price</strong>
                 <br>
-                <button class="btn btn-danger my-cart-btn" data-id="@product.ProductId" data-name="@product.ProductName" data-summary="@product.ProductDesc" data-price="@product.Price" data-quantity="1" data-image="images/img_1.png">Add to Cart</button>
+                <button class="btn btn-danger my-cart-btn" data-id="@product.ProductId" data-name="@product.ProductName" data-summary="@product.ProductDesc" data-price="@product.Price" data-quantity="1" data-image="@product.ProductImage">Add to Cart</button>
                 <a href="#" class="btn btn-info">Details</a>
             </div>
         }

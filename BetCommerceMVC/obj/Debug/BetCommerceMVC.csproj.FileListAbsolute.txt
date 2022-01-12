@@ -74,8 +74,8 @@ D:\Checkups\BetCommerceMVC\BetCommerceMVC\bin\System.Web.WebPages.Razor.xml
 D:\Checkups\BetCommerceMVC\BetCommerceMVC\bin\Newtonsoft.Json.xml
 D:\Checkups\BetCommerceMVC\BetCommerceMVC\bin\Antlr3.Runtime.pdb
 D:\Checkups\BetCommerceMVC\BetCommerceMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Checkups\BetCommerceMVC\BetCommerceMVC\obj\Debug\BetCommerceMVC.csproj.AssemblyReference.cache
 D:\Checkups\BetCommerceMVC\BetCommerceMVC\obj\Debug\BetCommerceMVC.csproj.CoreCompileInputs.cache
 D:\Checkups\BetCommerceMVC\BetCommerceMVC\obj\Debug\BetCommerceMVC.csproj.CopyComplete
 D:\Checkups\BetCommerceMVC\BetCommerceMVC\obj\Debug\BetCommerceMVC.dll
 D:\Checkups\BetCommerceMVC\BetCommerceMVC\obj\Debug\BetCommerceMVC.pdb
+D:\Checkups\BetCommerceMVC\BetCommerceMVC\obj\Debug\BetCommerceMVC.csproj.AssemblyReference.cache

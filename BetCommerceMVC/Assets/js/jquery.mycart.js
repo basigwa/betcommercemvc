@@ -22,7 +22,7 @@
       affixCartIcon: true,
       showCheckoutModal: true,
       numberOfDecimals: 2,
-      cartItems: null,
+      cartItems: null,  
       clickOnAddToCart: function ($addTocart) {},
       afterAddOnCart: function (products, totalPrice, totalQuantity) {},
       clickOnCartIcon: function ($cartIcon, products, totalPrice, totalQuantity) {},
@@ -273,14 +273,30 @@
       var discountPrice = options.getDiscountPrice(products, ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
       if (products.length && discountPrice !== null) {
         $cartTable.append(
-          '<tr style="color: red">' +
+          '<tr>' +
           '<td></td>' +
-          '<td><strong>Total (including discount)</strong></td>' +
+          '<td><strong>Customer Details</strong></td>' +
           '<td></td>' +
           '<td></td>' +
-          '<td class="text-right"><strong id="' + idDiscountPrice + '"></strong></td>' +
+          '<td class="text-right"><strong></strong></td>' +
           '<td></td>' +
-          '</tr>'
+            '</tr>'+
+            '<tr>' +
+            '<td></td>' +
+            '<td>FullName</td>' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td class="text-right"><input type="text" id="custName" /></td>' +
+            '<td></td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td></td>' +
+            '<td>Email</td>' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td class="text-right"><input type="text" id="custEmail" /></td>' +
+            '<td></td>' +
+            '</tr>' 
         );
       }
 

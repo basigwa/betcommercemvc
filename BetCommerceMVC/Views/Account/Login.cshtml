@@ -78,7 +78,7 @@
             if (useremail != "" && userpassword != "") {
                 
                 $.ajax({
-                    url: 'https://localhost:44373/Account/authenticate',
+                    url: 'https://localhost:44373/api/v1/bet/account/authenticate',
                     type: 'post',
                     contentType: 'application/json',
                     dataType: "json",
@@ -87,12 +87,8 @@
                     success: function (response) {
                         var msg = "";
                         if (response.jwtToken !== null) {
-                            var now = new Date();
-                            now.setMonth(now.getMonth() + 1);
-                            cookievalue = response.email + ";"
-
-                            document.cookie = "bsecret=" + cookievalue + "expires=" + now.toUTCString() + ";path=/;";
-                            document.location.href = "/Account/Login";
+                            sessionStorage.setItem("jtoken", response.jwtToken);
+                          
                             document.location.href = "/";
                         } else {
                             msg = "Invalid username and password!";

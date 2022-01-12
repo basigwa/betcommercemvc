@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\Accounts\LoginVM.cs" />
     <Compile Include="ViewModels\Accounts\RegisterVM.cs" />
     <Compile Include="ViewModels\Accounts\VerifyRequest.cs" />
+    <Compile Include="ViewModels\Products\ProductCategoryVM.cs" />
     <Compile Include="ViewModels\Products\ProductsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +209,7 @@
     <Content Include="Assets\js\gmaps.js" />
     <Content Include="Assets\js\html5shiv.js" />
     <Content Include="Assets\js\jquery.js" />
+    <Content Include="Assets\js\jquery.mycart.js" />
     <Content Include="Assets\js\jquery.prettyPhoto.js" />
     <Content Include="Assets\js\jquery.scrollUp.min.js" />
     <Content Include="Assets\js\main.js" />

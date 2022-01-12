@@ -39,19 +39,22 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#">Link</a></li>
-                    <li><a href="/Account/Login">Login</a></li>
-                </ul>
-                
-            </div>
+
+             
+                    <li><a href="/Account/Login" class="active"><div id="LoginLink">Login</div></a></li>
+            
+            
+                    <li><a href="/" class="active"><div id="WelcomeLink">Welcome</div></a> </li>
+                      
+            </ul>
+
+        </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
     </div>
 
     @Scripts.Render("~/Assets/js/jquery.js")
@@ -96,17 +99,30 @@
                     console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
                 },
                 checkoutCart: function (products, totalPrice, totalQuantity) {
-                    $.post("https://localhost:44373/create-order",
-                        {
-                            UserId: "Donald Duck",
-                            Total: totalPrice,
-                            Status: 1,
-                            PaymentMethod: "CASH",
-                            OrderItems: products
+                    var token = sessionStorage.getItem('jtoken');
+                    var custName = $('#custName').val();
+                    var custEmail = $('#custEmail').val();
+                    var dt = {
+                        Email: custEmail,
+                        FullName: custName,
+                        Total: totalPrice,
+                        Status: 1,
+                        PaymentMethod: "CASH",
+                        OrderItems: products
+                    }
+                    $.ajax({
+                        url: "https://localhost:44373/create-order",
+                        type: 'POST',
+                        headers: { "Authorization": token },
+                        data: dt,
+                        error: function (err) {
+                            console.log('Error!', err)
                         },
-                        function (data, status) {
-                            alert("Data: " + data + "\nStatus: " + status);
-                        });
+                        success: function (data) {
+                            console.log('Success!')
+                        }
+                    });
+
                 },
                 getDiscountPrice: function (products, totalPrice, totalQuantity) {
                     console.log("calculating discount", products, totalPrice, totalQuantity);
@@ -118,7 +134,16 @@
                 var currentElementNo = $(".row").children().length + 1;
                 $(".row").append('<div class="col-md-3 text-center"><img src="images/img_empty.png" width="150px" height="150px"><br>product ' + currentElementNo + ' - <strong>$' + currentElementNo + '</strong><br><button class="btn btn-danger my-cart-btn" data-id="' + currentElementNo + '" data-name="product ' + currentElementNo + '" data-summary="summary ' + currentElementNo + '" data-price="' + currentElementNo + '" data-quantity="1" data-image="images/img_empty.png">Add to Cart</button><a href="#" class="btn btn-info">Details</a></div>')
             });
+            if (sessionStorage.getItem("jtoken") === null) {
+                document.getElementById("LoginLink").hidden = false;
+                document.getElementById("WelcomeLink").hidden = true;
+            }
+            else {
+                document.getElementById("LoginLink").hidden = true;
+                document.getElementById("WelcomeLink").hidden = false;
+            }
         });
+
     </script>
     @RenderSection("scripts", required: false)
 </body>
